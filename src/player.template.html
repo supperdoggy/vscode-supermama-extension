@@ -34,7 +34,9 @@
 				
                 const playNext = () => {
                     current = (current + 1) % videos.length;
-                    source.src = new URL(`latest_version?id=${videos[current]}&amp;itag=22#t=60`, `https://${invidiousInstance}`)
+                    // q: what is the &amp;itag=22#t=60
+                    // a: https://stackoverflow.com/a/6764055
+                    source.src = new URL(`latest_version?id=${videos[current]}&amp;itag=22`, `https://${invidiousInstance}`)
                     video.load();
                     video.play();
                 };
@@ -47,7 +49,7 @@
     </head>
     <body>
         <div id="video">
-            <video id="video-player" autoplay loop muted controls width="WIDTH">
+            <video id="video-player" autoplay loop controls width="WIDTH">
                 <source id="video-source"/>
             </video>
         </div>

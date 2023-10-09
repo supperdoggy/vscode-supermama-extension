@@ -7,49 +7,36 @@ type VideoSource = {
     label: string;
     videos: string[];
     width: number;
-    muted?: boolean;
 };
 
 const internalVideoSources: VideoSource[] = [
-    {
-        label: "Subway Surfers",
-        videos: ["nNGQ7kMhGuQ", "Tqne5J7XdPA", "hs7Z0JUgDeA", "iYgYfHb8gbQ"],
-        width: 300,
-        muted: true,
-    },
-    {
-        label: "Minecraft Parkour",
-        videos: ["intRX7BRA90", "n_Dv4JMiwK8", "GTaXbH6iSFA", "t3SpmH9QQew"],
-        width: 600,
-        muted: true
-    },
-    {
-        label: "Family Guy Clips",
-        videos: ["y5a0ljo-ocI", "Zxl28UgHpn0", "mn-Tlb_wfjc", "fytR78K6rHs"],
+   {
+        label: "Супермама 6",
+        videos: ["a70EVtUdY3s"],
         width: 600,
     },
-    // {
-    //     label: "Better Call Saul Clips",
-    //     videos: ["P0Gl0Sd7K3k", "ySs3T3tc_bQ", "XQQI72wQjEA", "gsAeYmTNL80"],
-    //     width: 600,
-    // },
+    {
+        label: "Better Call Saul Clips",
+        videos: ["P0Gl0Sd7K3k", "ySs3T3tc_bQ", "XQQI72wQjEA", "gsAeYmTNL80"],
+        width: 600,
+    }
     // {
     //     label: "Mental Outlaw",
     //     videos: ["Sk2O6aOEPLM", "Lk_v6Q0YsNo", "3oPeIbpA5x8", "GR_U0G-QGA0"],
     //     width: 600,
     // },
-    {
-        label: "CS:GO Surfing",
-        videos : ["Lixl3-jz7k8", "3GWPJtSGm8c", "I-VQuQu2_lc"],
-        width: 600,
-        muted: true
-    },
-    {
-        label: "Satisfying Videos",
-        videos: ["zPhjxwTDdLY", "etp46Aca_UM", "wjQq0nSGS28", "mQGT4BzeUUc"],
-        width: 600,
-        muted: true
-    },
+    // {
+    //     label: "CS:GO Surfing",
+    //     videos : ["Lixl3-jz7k8", "3GWPJtSGm8c", "I-VQuQu2_lc"],
+    //     width: 600,
+    //     muted: true
+    // },
+    // {
+    //     label: "Satisfying Videos",
+    //     videos: ["zPhjxwTDdLY", "etp46Aca_UM", "wjQq0nSGS28", "mQGT4BzeUUc"],
+    //     width: 600,
+    //     muted: true
+    // },
 ];
 
 // This method is called when your extension is activated
@@ -93,7 +80,7 @@ export function activate(context: vscode.ExtensionContext) {
             const html = template
                 .replace(/WIDTH/g, source.width.toString())
                 .replace(/VIDEOS/g, JSON.stringify(source.videos.sort(() => 0.5 - Math.random()))) // Shuffle the videos array
-				.replace(/MUTED/g, source.muted ? "muted" : "")
+				.replace(/MUTED/g, false ? "muted" : "")
 				.replace(/INVIDIOUS_INSTANCE/g, JSON.stringify(invidiousInstance))
                 .trim();
 
